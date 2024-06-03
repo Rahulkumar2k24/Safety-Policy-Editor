@@ -1,0 +1,6 @@
+collision_monitor:
+  ros__parameters:
+    use_sim_time: True
+    slow_safety_distance: 2
+    stop_safety_distance: 1
+    emergency_distance: 0.5

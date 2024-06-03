@@ -1,0 +1,47 @@
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 1.0
+      Color: 160; 160; 160
+    - Class: rviz_default_plugins/LaserScan
+      Name: LaserScan
+      Enabled: true
+      Topic: /scan
+      Color: 255; 25; 0
+      Size (Pixels): 10
+    - Class: rviz_default_plugins/Path
+      Name: Path
+      Enabled: true
+      Topic: /path
+      Color: 255; 255; 0
+      Buffer Length: 100
+    - Class: rviz_default_plugins/Odometry
+      Name: Odometry
+      Enabled: true
+      Topic: /odom
+      Shape: Arrow
+      Arrow:
+        Shaft Length: 1.0
+        Shaft Radius: 0.1
+        Head Length: 0.3
+        Head Radius: 0.2
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: odom
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/Measure
+    - Class: rviz_default_plugins/SetInitialPose
+    - Class: rviz_default_plugins/SetGoal
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 10
+      Focal Point: 0; 0; 0
+      Pitch: 0
+      Yaw: 0
+      Name: Current
+    Saved: ~

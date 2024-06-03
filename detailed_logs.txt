@@ -1,0 +1,4 @@
+[ERROR] [1716266740.072309599] [rcl]: Failed to parse global arguments
+terminate called after throwing an instance of 'rclcpp::exceptions::RCLInvalidROSArgsError'
+  what():  failed to initialize rcl: Couldn't parse params file: '--params-file /absolute/path/to/ldlidar_config.yaml'. Error: Error opening YAML file, at ./src/parser.c:270, at ./src/rcl/arguments.c:406
+[ros2run]: Aborted
