@@ -31,27 +31,27 @@ Safety Policy Editor is a comprehensive GUI application designed for uploading, 
 
 ## Home Page:
 
-    The home page allows you to upload an Excel file and select vehicle types and zones.
+The home page allows you to upload an Excel file and select vehicle types and zones.
 
 ## Upload an Excel File:
 
-    Click on the upload button to select and upload an Excel file containing safety policy data.
-    The file name should include the zone information (e.g., "Fork Side.xlsx").
+Click on the upload button to select and upload an Excel file containing safety policy data.
+The file name should include the zone information (e.g., "Fork Side.xlsx").
 
 ## View and Edit Data:
 
-    The uploaded data is displayed in a table format.
-    Edit data directly within the table.
+The uploaded data is displayed in a table format.
+Edit data directly within the table.
 
 ## Add or Delete Rows:
 
-    Use the "Add Row" button to add new rows of data.
-    Use the "Delete Row" button to remove selected rows of data.
+Use the "Add Row" button to add new rows of data.
+Use the "Delete Row" button to remove selected rows of data.
 
 ## Save Data to SQLite:
 
-    Click the "Save to SQLite" button to save the updated data to a SQLite database.
-    The data will be saved in the appropriate database file based on the selected zone.
+Click the "Save to SQLite" button to save the updated data to a SQLite database.
+The data will be saved in the appropriate database file based on the selected zone.
     
     
 ## Dependencies
@@ -67,21 +67,21 @@ Install these dependencies using the following command:
 ## Detailed Functionality
 Uploading Files
 
-    The application allows you to upload Excel files. The file name should contain the zone information to automatically detect the zone.
-    Once a file is uploaded, the data is read using pandas and displayed in a table format.
+The application allows you to upload Excel files. The file name should contain the zone information to automatically detect the zone.
+Once a file is uploaded, the data is read using pandas and displayed in a table format.
 
 ## Viewing and Editing Data
 
-    The data is displayed in a QTableWidget, where each row corresponds to a safety policy entry.
-    Users can edit the data directly within the table. The Used_For and Speed columns are represented as QComboBox widgets for easy selection of predefined values.
+The data is displayed in a QTableWidget, where each row corresponds to a safety policy entry.
+Users can edit the data directly within the table. The Used_For and Speed columns are represented as QComboBox widgets for easy selection of predefined values.
 
 ## Adding and Deleting Rows
 
-    New rows can be added by clicking the "Add Row" button. Each new row includes default values and dropdowns for Used_For and Speed.
-    Rows can be deleted by selecting a row and clicking the "Delete Row" button.
+New rows can be added by clicking the "Add Row" button. Each new row includes default values and dropdowns for Used_For and Speed.
+Rows can be deleted by selecting a row and clicking the "Delete Row" button.
 
 ## Saving Data to SQLite
 
-    The updated data can be saved to a SQLite database. The database file is selected based on the current zone.
-    Before saving, the application checks if the Speed column exists and adds it if necessary.
-    The data is then inserted into the appropriate database table.
+The updated data can be saved to a SQLite database. The database file is selected based on the current zone.
+Before saving, the application checks if the Speed column exists and adds it if necessary.
+The data is then inserted into the appropriate database table.
