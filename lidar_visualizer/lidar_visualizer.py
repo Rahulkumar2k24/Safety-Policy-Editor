@@ -77,7 +77,7 @@ class LidarVisualizerUI(QMainWindow):
         
         self.info_label = QLabel('Upload a Policy file to update coordinates.')
         self.info_label.setAlignment(Qt.AlignCenter)
-        self.upload_label.setStyleSheet("font-size: 30px; margin-top: 20px;")
+        self.info_label.setStyleSheet("font-size: 20px; margin-top: 10px;")
         self.home_layout.addWidget(self.info_label)
         
         # Spacer to push content to the center
@@ -86,23 +86,23 @@ class LidarVisualizerUI(QMainWindow):
         # Vehicle List Dropdown
         self.vehicle_label = QLabel('Select Vehicle Type:')
         self.vehicle_label.setAlignment(Qt.AlignCenter)
-        self.vehicle_label.setStyleSheet("font-size: 15px; margin-top: 10px;")
+        self.vehicle_label.setStyleSheet("font-size: 20px; margin-top: 15px;")
         self.home_layout.addWidget(self.vehicle_label)
 
         self.vehicle_dropdown = QComboBox()
         self.vehicle_dropdown.addItems(['BOPT', 'HRSR', 'Fork Lift', 'Reach Truck', 'Accumover'])
-        self.vehicle_dropdown.setFixedSize(150, 20)
+        self.vehicle_dropdown.setFixedSize(200, 40)
         self.home_layout.addWidget(self.vehicle_dropdown, alignment=Qt.AlignCenter)
         
         # Zone List Dropdown
         self.zone_label = QLabel('Select Zone:')
         self.zone_label.setAlignment(Qt.AlignCenter)
-        self.zone_label.setStyleSheet("font-size: 15px; margin-top: 10px;")
+        self.zone_label.setStyleSheet("font-size: 20px; margin-top: 15px;")
         self.home_layout.addWidget(self.zone_label)
 
         self.zone_dropdown = QComboBox()
         self.zone_dropdown.addItems(['Fork Side', 'Non Fork Side'])
-        self.zone_dropdown.setFixedSize(150, 20)
+        self.zone_dropdown.setFixedSize(200, 40)
         self.zone_dropdown.currentIndexChanged.connect(self.update_sub_zone_visibility)
         self.home_layout.addWidget(self.zone_dropdown, alignment=Qt.AlignCenter)
         
@@ -187,125 +187,67 @@ class LidarVisualizerUI(QMainWindow):
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.table_layout.addWidget(self.table)
 
-        # Buttons for adding and deleting rows
+        # Buttons for adding, deleting rows, saving and back
         self.button_layout = QHBoxLayout()
 
         self.add_row_button = QPushButton('Add Row')
+        self.add_row_button.setFixedSize(160, 60)  # Compact size
         self.add_row_button.setStyleSheet("""
             QPushButton {
-                background-color:  #FF5733 ;
-                border: 1px solid #3e8e41;
+                background-color: #FF5733;
                 color: white;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                                          
-                display: inline-block;
-                font-size: 16px;
-                margin: 4px 2px;
-                cursor: pointer;
-                border-radius: 12px;
-                box-shadow: 3px 3px 5px #999;
-            }
-            QPushButton:hover {
-                background-color: #45a049;
-            }
-            QPushButton:pressed {
-                background-color: #45a049;
-                box-shadow: inset 3px 3px 5px #666;
-                transform: translateY(1px);
+                font-size: 25px;
+                font-weight: bold;
+                border-radius: 20px;
             }
         """)
         self.add_row_button.clicked.connect(self.add_table_row)
         self.button_layout.addWidget(self.add_row_button)
 
         self.delete_row_button = QPushButton('Delete Row')
+        self.delete_row_button.setFixedSize(160, 60)  # Compact size
         self.delete_row_button.setStyleSheet("""
             QPushButton {
-                background-color:  #FF5733 ;
-                border: 1px solid #da190b;
+                background-color: #FF5733;
                 color: white;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                margin: 4px 2px;
-                cursor: pointer;
-                border-radius: 12px;
-                box-shadow: 3px 3px 5px #999;
-            }
-            QPushButton:hover {
-                background-color: #da190b;
-            }
-            QPushButton:pressed {
-                background-color: #da190b;
-                box-shadow: inset 3px 3px 5px #666;
-                transform: translateY(1px);
+                font-size: 25px;
+                font-weight: bold;
+                border-radius: 20px;
             }
         """)
         self.delete_row_button.clicked.connect(self.delete_table_row)
         self.button_layout.addWidget(self.delete_row_button)
 
-        self.table_layout.addLayout(self.button_layout)
-
         self.save_button = QPushButton('Save to SQLite')
+        self.save_button.setFixedSize(160, 60)  # Compact size
         self.save_button.setStyleSheet("""
             QPushButton {
-                background-color:  #FF5733 ;
-                border: 1px solid #007bb5;
+                background-color: #FF5733;
                 color: white;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                margin: 4px 2px;
-                cursor: pointer;
-                border-radius: 12px;
-                box-shadow: 3px 3px 5px #999;
-            }
-            QPushButton:hover {
-                background-color: #007bb5;
-            }
-            QPushButton:pressed {
-                background-color: #007bb5;
-                box-shadow: inset 3px 3px 5px #666;
-                transform: translateY(1px);
+                font-size: 20px;
+                font-weight: bold;
+                border-radius: 20px;
             }
         """)
         self.save_button.setIcon(QIcon.fromTheme("document-save"))
         self.save_button.clicked.connect(self.save_to_db)
-        self.table_layout.addWidget(self.save_button)
+        self.button_layout.addWidget(self.save_button)
         
         self.back_button = QPushButton('Back')
+        self.back_button.setFixedSize(160, 60)  # Compact size
         self.back_button.setStyleSheet("""
             QPushButton {
-                background-color:  #FF5733 ;
-                border: 1px solid #ccc;
-                color: black;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                margin: 4px 2px;
-                cursor: pointer;
-                border-radius: 12px;
-                box-shadow: 3px 3px 5px #999;
-            }
-            QPushButton:hover {
-                background-color: #d6d6d6;
-                                       
-            }
-            QPushButton:pressed {
-                background-color: #d6d6d6;
-                box-shadow: inset 3px 3px 5px #666;
-                transform: translateY(1px);
+                background-color: #FF5733;
+                color: white;
+                font-size: 25px;
+                font-weight: bold;
+                border-radius: 20px;
             }
         """)
         self.back_button.clicked.connect(self.show_home_page)
-        self.table_layout.addWidget(self.back_button)
+        self.button_layout.addWidget(self.back_button)
+
+        self.table_layout.addLayout(self.button_layout)
         
         self.stacked_layout.addWidget(self.table_page)
         
@@ -331,20 +273,8 @@ class LidarVisualizerUI(QMainWindow):
     def read_excel(self, file_name):
         try:
             self.df = pd.read_excel(file_name)
-            # Log the columns found in the file
-            print("Columns found in the Excel file:", self.df.columns.tolist())
-            # Ensure that the DataFrame has the correct columns
-            expected_columns = {
-                'FIeld set No': 'Field_Set_No',
-                'Used For': 'Used_For',
-                'Slow Safety Distance/3': 'Slow_Safety_Distance_3',
-                'Stop Safety Distance/2': 'Stop_Safety_Distance_2',
-                'Emergency Distance/1': 'Emergency_Distance_1'
-            }
-            self.df.rename(columns=expected_columns, inplace=True)
-            if not all(col in self.df.columns for col in expected_columns.values()):
-                raise ValueError(f'Excel file must contain columns: {list(expected_columns.keys())}')
-            self.df = self.df[list(expected_columns.values())]  # Keep only the necessary columns
+            # Rename columns to avoid conflicts
+            self.df.columns = ['Field_Set_No', 'Used_For', 'Slow_Safety_Distance_3', 'Stop_Safety_Distance_2', 'Emergency_Distance_1']
             self.table_info_label.setText(f'Loaded {len(self.df)} coordinates from {file_name}.')
         except Exception as e:
             self.table_info_label.setText(f'Failed to load file: {str(e)}')
@@ -380,20 +310,29 @@ class LidarVisualizerUI(QMainWindow):
             item.setFlags(item.flags() & ~Qt.ItemIsEditable)
             self.table.setItem(i, 0, item)
 
-            combo_box = QComboBox()
-            combo_box.addItems(['Standing', 'Reverse at speed less than 0.5m/s', 'Reverse at speed less than 1m/s', 'Reverse at speed less than 1.3m/s', 'Forward at speed less than 0.5m/s', 'Forward at speed less than 1m/s', 'Forward at speed less than 1.3m/s', 'Forward with turning left', 'Forward with turning Right', 'Reverse with turn left', 'Reverse with turn right', 'Pickdrop field', 'Parking field', 'Diagnostic field', 'Reverse at speed greater than 1.3m/s', 'Forward at speed greater than 1.3m/s'])
-            index = combo_box.findText(row['Used_For'], Qt.MatchFixedString)
-            if index >= 0:
-                combo_box.setCurrentIndex(index)
-            self.table.setCellWidget(i, 1, combo_box)
+            combo_box_used_for = self.create_used_for_combobox(row['Used_For'])
+            self.table.setCellWidget(i, 1, combo_box_used_for)
 
-            speed_combo_box = QComboBox()
-            speed_combo_box.addItems(['0m/s','0.1m/s','0.2m/s','0.3m/s','0.4m/s','0.5m/s','0.6m/s','0.7m/s','0.8m/s', '0.9m/s','1m/s','1.1m/s','1.2m/s','1.3m/s','1.4m/s','1.5m/s','1.6m/s','1.7m/s','1.8m/s'])
-            self.table.setCellWidget(i, 2, speed_combo_box)
+            combo_box_speed = self.create_speed_combobox()
+            self.table.setCellWidget(i, 2, combo_box_speed)
 
             self.table.setItem(i, 3, QTableWidgetItem(str(row['Slow_Safety_Distance_3'])))
             self.table.setItem(i, 4, QTableWidgetItem(str(row['Stop_Safety_Distance_2'])))
             self.table.setItem(i, 5, QTableWidgetItem(str(row['Emergency_Distance_1'])))
+
+    def create_used_for_combobox(self, selected_value=None):
+        combo_box = QComboBox()
+        combo_box.addItems(['Standing', 'Reverse at speed less than 0.5m/s', 'Reverse at speed less than 1m/s', 'Reverse at speed less than 1.3m/s', 'Forward at speed less than 0.5m/s', 'Forward at speed less than 1m/s', 'Forward at speed less than 1.3m/s', 'Forward with turning left', 'Forward with turning Right', 'Reverse with turn left', 'Reverse with turn right', 'Pickdrop field', 'Parking field', 'Diagnostic field', 'Reverse at speed greater than 1.3m/s', 'Forward at speed greater than 1.3m/s'])
+        if selected_value:
+            index = combo_box.findText(selected_value, Qt.MatchFixedString)
+            if index >= 0:
+                combo_box.setCurrentIndex(index)
+        return combo_box
+
+    def create_speed_combobox(self):
+        combo_box = QComboBox()
+        combo_box.addItems(['0m/s', '0.1m/s', '0.2m/s', '0.3m/s', '0.4m/s', '0.5m/s', '0.6m/s', '0.7m/s', '0.8m/s', '0.9m/s', '1m/s', '1.1m/s', '1.2m/s', '1.3m/s', '1.4m/s', '1.5m/s', '1.6m/s', '1.7m/s', '1.8m/s'])
+        return combo_box
 
     def show_table_page(self):
         self.stacked_layout.setCurrentIndex(1)
@@ -406,14 +345,12 @@ class LidarVisualizerUI(QMainWindow):
         self.table.insertRow(row_position)
 
         self.table.setItem(row_position, 0, QTableWidgetItem(""))
-        
-        combo_box = QComboBox()
-        combo_box.addItems(['Standing', 'Reverse at speed less than 0.5m/s', 'Reverse at speed less than 1m/s', 'Reverse at speed less than 1.3m/s', 'Forward at speed less than 0.5m/s', 'Forward at speed less than 1m/s', 'Forward at speed less than 1.3m/s', 'Forward with turning left', 'Forward with turning Right', 'Reverse with turn left', 'Reverse with turn right', 'Pickdrop field', 'Parking field', 'Diagnostic field', 'Reverse at speed greater than 1.3m/s', 'Forward at speed greater than 1.3m/s'])
-        self.table.setCellWidget(row_position, 1, combo_box)
 
-        speed_combo_box = QComboBox()
-        speed_combo_box.addItems(['0m/s','0.1m/s','0.2m/s','0.3m/s','0.4m/s','0.5m/s','0.6m/s','0.7m/s','0.8m/s', '0.9m/s','1m/s','1.1m/s','1.2m/s','1.3m/s','1.4m/s','1.5m/s','1.6m/s','1.7m/s','1.8m/s'])
-        self.table.setCellWidget(row_position, 2, speed_combo_box)
+        combo_box_used_for = self.create_used_for_combobox()
+        self.table.setCellWidget(row_position, 1, combo_box_used_for)
+
+        combo_box_speed = self.create_speed_combobox()
+        self.table.setCellWidget(row_position, 2, combo_box_speed)
 
         for column in range(3, self.table.columnCount()):
             self.table.setItem(row_position, column, QTableWidgetItem(""))
@@ -451,19 +388,16 @@ class LidarVisualizerUI(QMainWindow):
             elif selected_sub_zone == "Left":
                 file_name = '/home/fbots/ldlidar_ros2_ws/lidar_visualizer/DB_Data/Left_Side.sqlite'
             else:
-                self.table_info_label.setText(f'Unrecognized Sub-Zone: {selected_sub_zone}')
+                self.table_info_label.setText(f'Please select a valid Sub-Zone.')
                 return
-        else:
-            self.table_info_label.setText(f'Unrecognized Zone: {selected_zone}')
-            return
+        # else:
+        #     self.table_info_label.setText(f'Please select a valid Zone.')
+        #     return
         
         try:
             # Connect to SQLite database
             conn = sqlite3.connect(file_name)
             cursor = conn.cursor()
-            
-            # Clear existing data
-            cursor.execute('DELETE FROM lidar_data')
             
             # Create table if it does not exist
             create_table_query = '''
@@ -477,6 +411,9 @@ class LidarVisualizerUI(QMainWindow):
                 )
             '''
             cursor.execute(create_table_query)
+            
+            # Clear existing data
+            cursor.execute('DELETE FROM lidar_data')
             
             # Insert data
             insert_query = '''
