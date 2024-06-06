@@ -6,12 +6,12 @@ Safety Policy Editor is a comprehensive GUI application designed for uploading, 
 
 ## Features
 
-- **Upload Excel Files:** Upload policy files in Excel format to view and edit safety data.
+- **load Files:** Load policy data from Excel files for different zones and sub-zones..
 - **View and Edit Data:** Display the uploaded data in a table format for easy viewing and editing.
 - **Add and Delete Rows:** Easily add new rows or delete existing rows in the data table.
 - **Save to SQLite:** Save the updated data to a SQLite database with a single click.
 - **Support for Multiple Zones and Vehicle Types:** Select different zones and vehicle types to work with specific datasets.
-- **Speed Column:** Introduce a speed column for each row to specify speed-related safety measures.
+
 
 ## Installation
 
