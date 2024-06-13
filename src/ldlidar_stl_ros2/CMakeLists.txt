@@ -21,27 +21,47 @@ find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(nav2_collision_monitor REQUIRED)
+find_package(visualization_msgs REQUIRED)
+
+# Find SQLite3
+find_path(SQLITE3_INCLUDE_DIR NAMES sqlite3.h)
+find_library(SQLITE3_LIBRARY NAMES sqlite3)
+
+# Find Python libraries
 find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
 
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  ament_lint_auto_find_test_dependencies()
-endif()
+# Manually add matplotlibcpp header
+set(MATPLOTLIBCPP_INCLUDE_DIR "/path/to/matplotlibcpp")  # Adjust this path
 
 # Include directories
 include_directories(
-  ${CMAKE_CURRENT_SOURCE_DIR}/include
-  ${Python3_INCLUDE_DIRS}
+  include
+  ${SQLITE3_INCLUDE_DIR}
+  ${MATPLOTLIBCPP_INCLUDE_DIR}  # Add the directory containing matplotlibcpp.h
+  ${Python3_INCLUDE_DIRS}       # Add Python include directories
 )
 
 # Add executable
-add_executable(collision_monitor src/collision_monitor.cpp)
-ament_target_dependencies(collision_monitor rclcpp sensor_msgs geometry_msgs std_msgs nav2_collision_monitor)
+add_executable(lidar_listener src/lidar_listener.cpp)
+
+# Link libraries
+target_link_libraries(lidar_listener
+  ${SQLITE3_LIBRARY}
+  ${Python3_LIBRARIES}  # Link against Python libraries
+)
+
+# Add dependencies
+ament_target_dependencies(lidar_listener
+  rclcpp
+  sensor_msgs
+  geometry_msgs
+  std_msgs
+  visualization_msgs
+)
 
 # Install targets
 install(TARGETS
-  collision_monitor
+  lidar_listener
   DESTINATION lib/${PROJECT_NAME}
 )
 
