@@ -1,0 +1,13 @@
+# lidar_listener_config.yaml
+parameters:
+  - front_lidar_topic: "/accumover/scan"
+  - left_lidar_topic: "l_scan"
+  - right_lidar_topic: "r_scan"
+  - velocity_topic: "/odometry/filtered"
+  - cmd_vel_topic: "cmd_vel"
+  - safety_topic: "safety_turnoff"
+  - output_topic: "cmd_vel_remapped"
+  - db_paths:
+      front: "/home/fbots/ldlidar_ros2_ws/lidar_visualizer/DB_Data/Fork_Side.sqlite"
+      left: "/home/fbots/ldlidar_ros2_ws/lidar_visualizer/DB_Data/Left_Side.sqlite"
+      right: "/home/fbots/ldlidar_ros2_ws/lidar_visualizer/DB_Data/Right_Side.sqlite"
