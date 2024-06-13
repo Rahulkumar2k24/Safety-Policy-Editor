@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>ldlidar_stl_ros2</name>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
   <description>The ldlidar_stl_ros2 package</description>
   <maintainer email="support@ldrobot.com">SHENZHEN LDROBOT CO., LTD.</maintainer>
   <license>MIT</license>
@@ -12,7 +12,9 @@
   <depend>sensor_msgs</depend>
   <depend>geometry_msgs</depend>
   <depend>std_msgs</depend>
-  <depend>nav2_collision_monitor</depend>
+  <depend>visualization_msgs</depend>
+  <depend>sqlite3</depend>
+  <depend>matplotlibcpp</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
